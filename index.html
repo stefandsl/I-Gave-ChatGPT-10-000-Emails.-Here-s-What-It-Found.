@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Email & Calendar Audit — Presentation</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080808;
+    --bg-subtle: #0f0f0f;
+    --fg: #e8e4df;
+    --fg-dim: #6b6660;
+    --fg-muted: #3a3632;
+    --ch1: #C9A96E;
+    --ch2: #5BA4A4;
+    --ch3: #D47B5E;
+    --ch4: #5B8DEF;
+    --ch5: #5EAD6E;
+    --ch6: #7B82C8;
+    --ch7: #9A9590;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Outfit', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); color: var(--fg); font-family: var(--sans); }
+
+  #slide-counter { position: fixed; top: 32px; right: 40px; font-family: var(--mono); font-size: 14px; font-weight: 300; color: var(--fg-dim); z-index: 1000; letter-spacing: 0.05em; }
+
+  #chapter-nav { position: fixed; left: 0; top: 0; bottom: 0; width: 260px; display: flex; flex-direction: column; justify-content: center; padding: 40px 0 40px 36px; z-index: 999; }
+  .chapter-item { padding: 9px 0; font-family: var(--sans); font-size: 13px; font-weight: 300; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-muted); cursor: pointer; transition: all 0.4s ease; position: relative; padding-left: 16px; }
+  .chapter-item::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 3px; height: 0; border-radius: 2px; transition: all 0.4s ease; }
+  .chapter-item.active { color: var(--fg); font-weight: 400; }
+  .chapter-item.active::before { height: 18px; }
+  .chapter-item.visited { color: var(--fg-dim); }
+  .chapter-item:hover { color: var(--fg); }
+
+  #slides-wrapper { position: fixed; top: 0; left: 260px; right: 0; bottom: 0; overflow: hidden; }
+  .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 60px 80px; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none; }
+  .slide.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .slide-inner { width: 100%; max-width: 960px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100%; }
+
+  /* ---- TYPOGRAPHY (bumped sizes) ---- */
+  .big-statement { font-family: var(--serif); font-size: 4.2rem; font-weight: 300; line-height: 1.15; text-align: center; }
+  .big-statement em { font-style: italic; font-weight: 400; }
+  .sub-text { font-family: var(--sans); font-size: 1.15rem; font-weight: 300; color: var(--fg-dim); margin-top: 28px; text-align: center; line-height: 1.6; max-width: 580px; }
+  .stat-number { font-family: var(--serif); font-weight: 300; font-size: 9rem; line-height: 1; letter-spacing: -0.03em; }
+  .stat-label { font-family: var(--sans); font-size: 1.15rem; font-weight: 300; text-transform: uppercase; letter-spacing: 0.15em; margin-top: 12px; }
+  .section-label { font-family: var(--mono); font-size: 0.85rem; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 32px; }
+  .medium-heading { font-family: var(--serif); font-size: 2.8rem; font-weight: 300; line-height: 1.2; text-align: center; }
+  .small-heading { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; line-height: 1.25; text-align: center; }
+
+  /* ---- MAP CARDS ---- */
+  .map-cards { display: flex; gap: 32px; margin-top: 40px; }
+  .map-card { flex: 1; padding: 32px 24px; border-radius: 12px; text-align: center; }
+  .map-card-letter { font-family: var(--serif); font-size: 3.6rem; font-weight: 600; line-height: 1; margin-bottom: 12px; }
+  .map-card-title { font-family: var(--sans); font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; }
+  .map-card-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.6; color: var(--fg-dim); }
+  .map-card-file { font-family: var(--mono); font-size: 0.85rem; margin-top: 16px; opacity: 0.5; }
+
+  /* ---- PROMPT STYLES ---- */
+  .prompt-container { width: 100%; max-width: 860px; border-radius: 12px; padding: 32px 36px; font-family: var(--mono); font-size: 0.82rem; line-height: 1.8; font-weight: 300; overflow-y: auto; max-height: 82vh; margin-right: 100px; align-self: flex-start; }
+  .prompt-container::-webkit-scrollbar { width: 4px; }
+  .prompt-container::-webkit-scrollbar-track { background: transparent; }
+  .prompt-container::-webkit-scrollbar-thumb { background: var(--fg-muted); border-radius: 4px; }
+  .prompt-h1 { font-family: var(--sans); font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; padding-bottom: 12px; display: block; }
+  .prompt-h2 { font-family: var(--sans); font-size: 0.92rem; font-weight: 500; margin-top: 22px; margin-bottom: 10px; display: block; letter-spacing: 0.04em; }
+  .prompt-h3 { font-family: var(--sans); font-size: 0.85rem; font-weight: 500; margin-top: 16px; margin-bottom: 6px; display: block; }
+  .prompt-text { font-family: var(--mono); font-size: 0.82rem; font-weight: 300; line-height: 1.85; color: var(--fg-dim); display: block; margin-bottom: 4px; }
+  .prompt-highlight { border-left: 3px solid; padding: 14px 18px; border-radius: 0 6px 6px 0; margin: 14px 0; }
+  .prompt-list { padding-left: 22px; margin: 6px 0; }
+  .prompt-list li { font-family: var(--mono); font-size: 0.82rem; font-weight: 300; line-height: 1.85; color: var(--fg-dim); margin: 2px 0; }
+  .prompt-code-block { padding: 14px 18px; border-radius: 6px; margin: 10px 0; font-size: 0.8rem; line-height: 1.7; white-space: pre-wrap; }
+  .prompt-key { font-weight: 500; color: var(--fg); }
+
+  /* ---- LAYOUT HELPERS ---- */
+  .vs-container { display: flex; align-items: center; gap: 40px; margin-top: 28px; }
+  .vs-box { flex: 1; padding: 32px; border-radius: 12px; text-align: center; }
+  .vs-box-number { font-family: var(--serif); font-size: 3.6rem; font-weight: 300; line-height: 1; margin-bottom: 8px; }
+  .vs-box-label { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; text-transform: uppercase; letter-spacing: 0.1em; }
+  .vs-divider { font-family: var(--serif); font-size: 1.5rem; color: var(--fg-muted); font-style: italic; }
+
+  .loop-diagram { display: flex; align-items: stretch; margin-top: 32px; }
+  .loop-side { flex: 1; padding: 28px; border-radius: 12px; text-align: center; }
+  .loop-side-label { font-family: var(--sans); font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 16px; }
+  .loop-side-desc { font-family: var(--sans); font-size: 0.95rem; font-weight: 300; line-height: 1.65; color: var(--fg-dim); }
+  .loop-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .loop-center-arrow { display: flex; align-items: center; justify-content: center; width: 56px; flex-shrink: 0; }
+
+  .gap-visual { display: flex; gap: 64px; align-items: flex-start; margin-top: 36px; }
+  .gap-col { flex: 1; }
+  .gap-col-title { font-family: var(--sans); font-size: 0.88rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 24px; text-align: center; }
+  .gap-bar-item { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+  .gap-bar-name { font-family: var(--sans); font-size: 0.88rem; font-weight: 300; width: 130px; text-align: right; color: var(--fg-dim); flex-shrink: 0; }
+  .gap-bar-track { flex: 1; height: 20px; border-radius: 3px; overflow: hidden; }
+  .gap-bar-fill { height: 100%; border-radius: 3px; }
+  .gap-bar-pct { font-family: var(--mono); font-size: 0.82rem; width: 40px; flex-shrink: 0; }
+
+  .timeline-row { display: flex; align-items: flex-end; width: 100%; max-width: 800px; margin-top: 40px; gap: 2px; }
+  .timeline-month { flex: 1; text-align: center; }
+  .timeline-bar { width: 100%; border-radius: 3px; margin-bottom: 6px; }
+  .timeline-label { font-family: var(--mono); font-size: 0.78rem; color: var(--fg-dim); }
+
+  .doc-item { padding: 16px 22px; border-radius: 8px; font-family: var(--sans); font-size: 0.95rem; font-weight: 300; text-align: center; border: 1px solid; }
+
+  .demo-badge { display: inline-flex; align-items: center; gap: 10px; padding: 14px 32px; border-radius: 100px; font-family: var(--mono); font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 28px; animation: gentle-pulse 2.5s ease-in-out infinite; }
+  @keyframes gentle-pulse { 0%, 100% { opacity: 0.9; } 50% { opacity: 0.55; } }
+
+  .recap-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; width: 100%; max-width: 780px; }
+
+  .recap-item { padding: 24px 28px; border-radius: 10px; border: 1px solid var(--fg-muted); background: var(--bg-subtle); }
+  .recap-num { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; margin-bottom: 8px; }
+  .recap-text { font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg-dim); line-height: 1.55; }
+
+  /* Grain */
+  body::after { content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events: none; z-index: 9999; opacity: 0.5; }
+
+  /* Animations */
+  .slide.active .fade-up { animation: fadeUp 0.7s ease forwards; }
+  .slide.active .fade-up-d1 { animation-delay: 0.1s; opacity: 0; }
+  .slide.active .fade-up-d2 { animation-delay: 0.25s; opacity: 0; }
+  .slide.active .fade-up-d3 { animation-delay: 0.4s; opacity: 0; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<div id="slide-counter">1 / 16</div>
+
+<nav id="chapter-nav">
+  <div class="chapter-item active" data-chapter="memory" onclick="goToChapter('memory')">The Memory Problem</div>
+  <div class="chapter-item" data-chapter="export" onclick="goToChapter('export')">Exporting Your Data</div>
+  <div class="chapter-item" data-chapter="map" onclick="goToChapter('map')">The MAP Framework</div>
+  <div class="chapter-item" data-chapter="openloops" onclick="goToChapter('openloops')">Open Loops</div>
+
+  <div class="chapter-item" data-chapter="documentation" onclick="goToChapter('documentation')">Documentation Matters</div>
+  <div class="chapter-item" data-chapter="recap" onclick="goToChapter('recap')">Recap</div>
+</nav>
+
+<div id="slides-wrapper">
+
+  <!-- ═══════ CH 1: MEMORY PROBLEM (1 slide) ═══════ -->
+
+  <div class="slide active" data-chapter="memory">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch1);">The Memory Problem</div>
+      <div class="vs-container fade-up fade-up-d1">
+        <div class="vs-box" style="background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.12);">
+          <div class="vs-box-label" style="color: var(--fg-dim); margin-bottom: 12px;">Your planning is based on</div>
+          <div class="vs-box-number" style="color: var(--fg-dim); text-decoration: line-through; opacity: 0.5;">Vibes</div>
+        </div>
+        <div class="vs-divider">→</div>
+        <div class="vs-box" style="background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2);">
+          <div class="vs-box-label" style="color: var(--ch1); margin-bottom: 12px;">It should be based on</div>
+          <div class="vs-box-number" style="color: var(--ch1);">Data</div>
+        </div>
+      </div>
+      <div class="sub-text fade-up fade-up-d2" style="margin-top:36px;">The data already exists.<br>It's sitting in your inbox.</div>
+    </div>
+  </div>
+
+  <!-- ═══════ CH 2: EXPORTING DATA (3 slides) ═══════ -->
+
+  <div class="slide" data-chapter="export">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch2);">Exporting Your Data</div>
+      <div class="medium-heading fade-up fade-up-d1" style="margin-bottom: 40px;">
+        <span style="color: var(--ch2); font-family: var(--mono); font-size: 1.8rem; font-weight: 300;">takeout.google.com</span>
+      </div>
+      <div style="display: flex; gap: 40px; margin-top: 12px; justify-content: center;" class="fade-up fade-up-d2">
+        <div style="text-align: center; padding: 28px 36px; border-radius: 10px; background: rgba(91,164,164,0.08); border: 1px solid rgba(91,164,164,0.15);">
+          <div style="font-family: var(--mono); font-size: 1.6rem; margin-bottom: 8px; color: var(--ch2);">.mbox</div>
+          <div style="font-family: var(--sans); font-size: 0.95rem; color: var(--fg-dim); font-weight: 300;">Every email<br>Timestamps · Threads · Contacts</div>
+        </div>
+      </div>
+      <div class="sub-text fade-up fade-up-d3">Free. Deselect everything except Gmail.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-chapter="export">
+    <div class="slide-inner">
+      <div class="small-heading fade-up">Not just Google.</div>
+      <div style="display: flex; gap: 20px; margin-top: 32px; flex-wrap: wrap; justify-content: center;" class="fade-up fade-up-d1">
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">LinkedIn DMs</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">Slack Messages</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">Facebook</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">Instagram</div>
+      </div>
+      <div class="sub-text fade-up fade-up-d2"><span style="color: var(--ch2);">Same principle: export the raw data, point AI at it.</span></div>
+    </div>
+  </div>
+
+  <div class="slide" data-chapter="export">
+    <div class="slide-inner">
+      <div class="vs-container fade-up">
+        <div class="vs-box" style="background: rgba(91,164,164,0.04); border: 1px solid rgba(91,164,164,0.1);">
+          <div class="vs-box-number" style="color: var(--ch2); font-size: 2.8rem;">~10,000</div>
+          <div class="vs-box-label" style="color: var(--fg-dim);">pages of your data</div>
+        </div>
+        <div class="vs-divider" style="color: var(--ch2);">vs</div>
+        <div class="vs-box" style="background: rgba(91,164,164,0.04); border: 1px solid rgba(91,164,164,0.1);">
+          <div class="vs-box-number" style="color: var(--fg-dim); font-size: 2.8rem;">~200</div>
+          <div class="vs-box-label" style="color: var(--fg-dim);">pages AI can hold</div>
+        </div>
+      </div>
+      <div class="sub-text fade-up fade-up-d1" style="margin-top: 36px;">You need a system that lets AI <span style="color: var(--ch2);">survive memory resets.</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════ CH 3: MAP FRAMEWORK (4 slides) ═══════ -->
+
+  <div class="slide" data-chapter="map">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch3);">The Solution</div>
+      <div style="display: flex; align-items: baseline; gap: 6px; justify-content: center;" class="fade-up fade-up-d1">
+        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;">M</span>
+        <span class="big-statement" style="color: var(--fg-dim); font-size: 3rem;">·</span>
+        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;">A</span>
+        <span class="big-statement" style="color: var(--fg-dim); font-size: 3rem;">·</span>
+        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;">P</span>
+      </div>
+      <div style="display: flex; gap: 36px; margin-top: 8px; justify-content: center;" class="fade-up fade-up-d2">
+        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);">Mission</span>
+        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);">Activity Log</span>
+        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);">Payoff</span>
+      </div>
+      <div class="sub-text fade-up fade-up-d3">Three files. AI's memory that survives the reset.</div>
+    </div>
+  </div>
+
+  <!-- MAP cards (edited: removed "The briefing." and "The checklist.") -->
+  <div class="slide" data-chapter="map">
+    <div class="slide-inner">
+      <div class="map-cards fade-up">
+        <div class="map-card" style="background: rgba(212,123,94,0.08); border: 1px solid rgba(212,123,94,0.15);">
+          <div class="map-card-letter" style="color: var(--ch3);">M</div>
+          <div class="map-card-title" style="color: var(--ch3);">Mission</div>
+          <div class="map-card-desc">The constant across all resets.</div>
+          <div class="map-card-file" style="color: var(--ch3);">claude.md / agents.md</div>
+        </div>
+        <div class="map-card" style="background: rgba(212,123,94,0.05); border: 1px solid rgba(212,123,94,0.1);">
+          <div class="map-card-letter" style="color: var(--ch3); opacity:0.7;">A</div>
+          <div class="map-card-title" style="color: var(--ch3); opacity:0.8;">Activity Log</div>
+          <div class="map-card-desc">Prevents duplicate work.</div>
+          <div class="map-card-file" style="color: var(--ch3);">todos.md</div>
+        </div>
+        <div class="map-card" style="background: rgba(212,123,94,0.05); border: 1px solid rgba(212,123,94,0.1);">
+          <div class="map-card-letter" style="color: var(--ch3); opacity:0.7;">P</div>
+          <div class="map-card-title" style="color: var(--ch3); opacity:0.8;">Payoff</div>
+          <div class="map-card-desc">Where insight gathers.</div>
+          <div class="map-card-file" style="color: var(--ch3);">insights.md</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CYCLE DIAGRAM — 100% SVG, precise coordinates -->
+  <!--
+    LAYOUT GRID (viewBox 0 0 640 350):
+    Row 1 (top):     y = 20..70   | boxes at x: 60-200, 250-400, 450-590
+    Row 2 (middle):  y = 145..195 | box at x: 450-590
+    Row 3 (bottom):  y = 270..320 | boxes at x: 450-590, 250-400, 60-200
+
+    Arrow gaps: 4px from box edge
+    Horizontal arrows: y = box center (45 top, 295 bottom)
+    Vertical arrows: x = box center (520 right column)
+    Loop: left edge (x=56) curves around via x=20
+  -->
+  <div class="slide" data-chapter="map">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch3);">The Cycle</div>
+      <div class="fade-up fade-up-d1" style="display:flex; justify-content:center;">
+        <svg viewBox="0 0 640 350" width="640" height="350" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" markerUnits="userSpaceOnUse">
+              <polygon points="0 0, 8 3, 0 6" fill="rgba(212,123,94,0.5)"/>
+            </marker>
+            <marker id="arrow-accent" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#D47B5E"/>
+            </marker>
+          </defs>
+
+          <!-- ══ ROW 1: TOP BOXES ══ -->
+          <rect x="60" y="20" width="140" height="50" rx="8"
+                fill="rgba(212,123,94,0.14)" stroke="rgba(212,123,94,0.3)" stroke-width="1"/>
+          <text x="130" y="50" text-anchor="middle"
+                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Wake Up</text>
+
+          <rect x="250" y="20" width="150" height="50" rx="8"
+                fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
+          <text x="325" y="50" text-anchor="middle"
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Read Mission</text>
+
+          <rect x="450" y="20" width="140" height="50" rx="8"
+                fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
+          <text x="520" y="50" text-anchor="middle"
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Check Todos</text>
+
+          <!-- ══ ROW 2: MIDDLE BOX ══ -->
+          <rect x="450" y="145" width="140" height="50" rx="8"
+                fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
+          <text x="520" y="175" text-anchor="middle"
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Process Batch</text>
+
+          <!-- ══ ROW 3: BOTTOM BOXES ══ -->
+          <rect x="450" y="270" width="140" height="50" rx="8"
+                fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
+          <text x="520" y="300" text-anchor="middle"
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Write Insights</text>
+
+          <rect x="250" y="270" width="150" height="50" rx="8"
+                fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
+          <text x="325" y="300" text-anchor="middle"
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Update Todos</text>
+
+          <rect x="60" y="270" width="140" height="50" rx="8"
+                fill="rgba(212,123,94,0.17)" stroke="rgba(212,123,94,0.35)" stroke-width="1"/>
+          <text x="130" y="294" text-anchor="middle"
+                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Memory Full</text>
+          <text x="130" y="312" text-anchor="middle"
+                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="13" font-weight="300">→ Reset</text>
+
+          <!-- ══ ARROWS ══ -->
+          <!-- Top: Wake Up → Read Mission -->
+          <line x1="204" y1="45" x2="246" y2="45"
+                stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Top: Read Mission → Check Todos -->
+          <line x1="404" y1="45" x2="446" y2="45"
+                stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Right: Check Todos ↓ Process Batch -->
+          <line x1="520" y1="74" x2="520" y2="141"
+                stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Right: Process Batch ↓ Write Insights -->
+          <line x1="520" y1="199" x2="520" y2="266"
+                stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Bottom: Write Insights → Update Todos (right to left) -->
+          <line x1="446" y1="295" x2="404" y2="295"
+                stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- Bottom: Update Todos → Memory Full (right to left) -->
+          <line x1="246" y1="295" x2="204" y2="295"
+                stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+          <!-- ══ LOOP BACK (dashed, accent) ══ -->
+          <!-- From Memory Full left edge → curve up → Wake Up left edge -->
+          <path d="M 56,280 Q 22,280 22,248 L 22,92 Q 22,60 56,60"
+                fill="none" stroke="#D47B5E" stroke-width="2.5"
+                stroke-dasharray="8 5" marker-end="url(#arrow-accent)" opacity="0.8"/>
+
+          <!-- REPEAT label along left side -->
+          <text x="10" y="175" fill="#D47B5E"
+                font-family="JetBrains Mono,monospace" font-size="10" font-weight="400"
+                letter-spacing="0.12em" text-anchor="middle"
+                transform="rotate(-90 10 175)" opacity="0.65">REPEAT</text>
+        </svg>
+      </div>
+      <div class="sub-text fade-up fade-up-d2" style="margin-top: 12px;">The files are AI's memory that <em style="color: var(--ch3);">survives</em> the reset.</div>
+    </div>
+  </div>
+
+  <!-- DEMO -->
+  <div class="slide" data-chapter="map">
+    <div class="slide-inner" style="justify-content: center;">
+      <div style="text-align: center;" class="fade-up">
+        <div style="font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ch3); margin-bottom: 24px;">Live Walkthrough</div>
+        <div class="medium-heading" style="font-size: 2.2rem;">Setting up the MAP system</div>
+        <div class="sub-text" style="margin-top: 16px; color: var(--fg-dim);">Claude Cowork · Claude Code · OpenAI Codex</div>
+        <div class="demo-badge" style="background: rgba(212,123,94,0.1); border: 1px solid rgba(212,123,94,0.25); color: var(--ch3);">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ch3);"></span>
+          We're doing it live
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETUP FLOW -->
+  <div class="slide" data-chapter="map">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch3);">Getting Started</div>
+      <div style="margin-top: 8px;" class="fade-up fade-up-d1">
+        <svg width="700" height="340" viewBox="0 0 700 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="setup-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="rgba(212,123,94,0.5)"/></marker>
+          </defs>
+
+          <!-- Step 1: Folder -->
+          <rect x="0" y="30" width="150" height="120" rx="12" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.2)" stroke-width="1"/>
+          <text x="75" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">📁</text>
+          <text x="75" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Create a folder</text>
+          <text x="75" y="122" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300">Drop in your Takeout files</text>
+          <!-- File icons inside folder -->
+          <rect x="24" y="132" width="46" height="14" rx="3" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.2)" stroke-width="0.5"/>
+          <text x="47" y="142" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="8">.mbox</text>
+
+          <!-- Arrow 1→2 -->
+          <line x1="158" y1="90" x2="178" y2="90" stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#setup-arrow)"/>
+
+          <!-- Step 2: Open in tool -->
+          <rect x="186" y="30" width="150" height="120" rx="12" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.2)" stroke-width="1"/>
+          <text x="261" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">🖥</text>
+          <text x="261" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Open in AI tool</text>
+          <text x="261" y="120" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300">Codex · Claude Cowork</text>
+
+          <!-- Arrow 2→3 -->
+          <line x1="344" y1="90" x2="364" y2="90" stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#setup-arrow)"/>
+
+          <!-- Step 3: Create file -->
+          <rect x="372" y="30" width="150" height="120" rx="12" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.2)" stroke-width="1"/>
+          <text x="447" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">📝</text>
+          <text x="447" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Create instructions</text>
+          <rect x="394" y="110" width="46" height="14" rx="3" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.2)" stroke-width="0.5"/>
+          <text x="417" y="120" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="7.5">agents.md</text>
+          <rect x="448" y="110" width="50" height="14" rx="3" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.2)" stroke-width="0.5"/>
+          <text x="473" y="120" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="7.5">CLAUDE.md</text>
+
+          <!-- Arrow 3→4 -->
+          <line x1="530" y1="90" x2="550" y2="90" stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#setup-arrow)"/>
+
+          <!-- Step 4: Get to work -->
+          <rect x="558" y="30" width="140" height="120" rx="12" fill="rgba(212,123,94,0.14)" stroke="rgba(212,123,94,0.35)" stroke-width="1.5"/>
+          <text x="628" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">🚀</text>
+          <text x="628" y="98" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="15" font-weight="500">"Get to work"</text>
+          <text x="628" y="120" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300">AI takes it from here</text>
+
+          <!-- Bottom: what's in the folder visual -->
+          <text x="0" y="210" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="10" font-weight="400" letter-spacing="0.1em">YOUR FOLDER</text>
+          <rect x="0" y="222" width="700" height="108" rx="10" fill="rgba(212,123,94,0.04)" stroke="rgba(212,123,94,0.1)" stroke-width="1" stroke-dasharray="4 3"/>
+
+          <rect x="60" y="242" width="120" height="68" rx="8" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.15)" stroke-width="1"/>
+          <text x="120" y="268" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11">Gmail export</text>
+          <text x="120" y="286" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="10">.mbox</text>
+
+          <text x="215" y="276" fill="rgba(212,123,94,0.3)" font-family="Outfit,sans-serif" font-size="20">+</text>
+
+          <rect x="255" y="242" width="160" height="68" rx="8" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.25)" stroke-width="1"/>
+          <text x="335" y="268" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="11" font-weight="400">Your instructions</text>
+          <text x="335" y="286" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="10">agents.md / CLAUDE.md</text>
+
+          <text x="450" y="276" fill="rgba(212,123,94,0.3)" font-family="Outfit,sans-serif" font-size="20">=</text>
+
+          <rect x="490" y="248" width="96" height="56" rx="8" fill="rgba(212,123,94,0.18)" stroke="rgba(212,123,94,0.4)" stroke-width="1.5"/>
+          <text x="538" y="272" text-anchor="middle" fill="#D47B5E" font-family="Outfit,sans-serif" font-size="12" font-weight="500">Ready to go</text>
+          <text x="538" y="290" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="18">✓</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ CH 4: OPEN LOOPS (4 slides) ═══════ -->
+
+  <div class="slide" data-chapter="openloops">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch4);">Email Mining</div>
+      <div class="big-statement fade-up fade-up-d1"><em style="color: var(--ch4);">Open Loops</em></div>
+      <div class="sub-text fade-up fade-up-d2">Commitments made. Never followed through.<br>In both directions.</div>
+    </div>
+  </div>
+
+  <div class="slide" data-chapter="openloops">
+    <div class="slide-inner">
+      <div class="big-statement fade-up" style="font-size: 3.6rem;">That's an <em style="color: var(--ch4);">un-chased</em> opportunity.</div>
+      <div class="sub-text fade-up fade-up-d1">People who expressed genuine interest.<br>And you never circled back.</div>
+      <div style="margin-top: 36px; font-family: var(--mono); font-size: 0.88rem; color: var(--ch4); letter-spacing: 0.08em;" class="fade-up fade-up-d2">Could be 10, 20, 50 of those in your email right now</div>
+    </div>
+  </div>
+
+  <!-- Email Prompt -->
+  <div class="slide" data-chapter="openloops">
+    <div class="slide-inner" style="justify-content: flex-start; padding-top: 16px; align-items: flex-start;">
+      <div class="prompt-container" style="background: rgba(91,141,239,0.04); border: 1px solid rgba(91,141,239,0.1); color: var(--fg);">
+        <span class="prompt-h1" style="color: var(--ch4); border-bottom: 1px solid rgba(91,141,239,0.15);">Mission File — Email Audit</span>
+        <span class="prompt-text">Analyze exported email data (MBOX) to find open loops and broken commitments — both directions. Work in chunks. Survive resets. Accumulate findings.</span>
+        <div class="prompt-highlight" style="border-color: var(--ch4); background: rgba(91,141,239,0.06); margin-top: 18px;">
+          <span class="prompt-h2" style="color: var(--ch4); margin-top: 0;">⟳ Session Start <span style="font-weight: 300; font-size: 0.82rem; opacity: 0.7;">(Every Time Memory is Compacted)</span></span>
+          <ol class="prompt-list" style="list-style: decimal;">
+            <li>Read this file</li>
+            <li>Read <span class="prompt-key">todos.md</span> — if it doesn't exist, create it first (see Step Zero)</li>
+            <li>Read <span class="prompt-key">insights.md</span> — if it doesn't exist, create it with sections for: Outbound Open Loops, Inbound Open Loops, Top 10 Recovery List</li>
+            <li>Pick up at the first unchecked item in todos.md</li>
+            <li>Process that item, write findings to insights.md, check it off in todos.md</li>
+            <li>Repeat until finished</li>
+          </ol>
+        </div>
+        <span class="prompt-h2" style="color: var(--ch4);">Step Zero: Build the Todo List</span>
+        <span class="prompt-text">Before analyzing anything, scan the MBOX file and create todos.md with:</span>
+        <ul class="prompt-list">
+          <li>Total email count and date range</li>
+          <li>Chronological batches of ~20 emails each as checkboxes</li>
+          <li>A final section of post-processing tasks as checkboxes</li>
+        </ul>
+        <div class="prompt-code-block" style="background: rgba(91,141,239,0.04); border: 1px solid rgba(91,141,239,0.08); color: var(--fg-dim);">## Email Batches
+- [ ] Batch 1: Jan 1 – Feb 15 (~20 emails)
+- [ ] Batch 2: Feb 16 – Apr 2 (~20 emails)
+...
+## Post-Processing
+- [ ] Top 10 Recovery List
+- [ ] Final review of insights.md</div>
+        <div class="prompt-highlight" style="border-color: var(--ch4); background: rgba(91,141,239,0.06); margin-top: 18px;">
+          <span class="prompt-h2" style="color: var(--ch4); margin-top: 0;">🔍 What to Find</span>
+          <span class="prompt-h3" style="color: var(--ch4);">Outbound Open Loops</span>
+          <span class="prompt-text">Sent emails with commitment language (<span class="prompt-key">"I'll send," "I'll follow up," "by Friday"</span>) where follow-through is missing.<br>Log: date, recipient, promise, follow-through (yes/no/partial), <span class="prompt-key">still recoverable?</span>, priority (High/Med/Low).</span>
+          <span class="prompt-h3" style="color: var(--ch4);">Inbound Open Loops</span>
+          <span class="prompt-text">Received emails where others made commitments and didn't deliver. Did you follow up?<br>Log: date, sender, their commitment, follow-through, your follow-up (yes/no), <span class="prompt-key">recoverable?</span>, priority.</span>
+        </div>
+        <div class="prompt-highlight" style="border-color: rgba(91,141,239,0.4); background: rgba(91,141,239,0.03); margin-top: 18px;">
+          <span class="prompt-h2" style="color: var(--ch4); margin-top: 0;">📋 Rules</span>
+          <ul class="prompt-list">
+            <li><span class="prompt-key">One batch per cycle.</span> Check it off before starting the next.</li>
+            <li><span class="prompt-key">Always update both files</span> before memory is compacted.</li>
+            <li>Never re-process a checked item.</li>
+            <li>Be specific: names, dates, short quotes.</li>
+            <li><span class="prompt-key">Opportunity framing, not guilt.</span> Flag ambiguous items as "low confidence."</li>
+            <li>Write at a fifth-grade reading level. Short sentences.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ CH 6: DOCUMENTATION (3 slides) ═══════ -->
+
+  <div class="slide" data-chapter="documentation">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch6);">The Bigger Point</div>
+      <div class="big-statement fade-up fade-up-d1" style="font-size: 3.2rem;">Documentation is<br><em style="color: var(--ch6);">fuel for future AI.</em></div>
+    </div>
+  </div>
+
+  <div class="slide" data-chapter="documentation">
+    <div class="slide-inner">
+      <div class="small-heading fade-up" style="margin-bottom: 32px;">Every data point is an investment</div>
+      <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 520px;" class="fade-up fade-up-d1">
+        <div style="display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-radius: 8px; background: rgba(123,130,200,0.06); border: 1px solid rgba(123,130,200,0.1);">
+          <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(123,130,200,0.12); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;">🎙</div>
+          <div style="font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg);">Record your meetings.</div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-radius: 8px; background: rgba(123,130,200,0.04); border: 1px solid rgba(123,130,200,0.08);">
+          <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(123,130,200,0.08); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;">✍️</div>
+          <div style="font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg);">Keep communication in writing.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAP CHART — labels INSIDE, not at right edge -->
+  <div class="slide" data-chapter="documentation">
+    <div class="slide-inner">
+      <div class="small-heading fade-up" style="margin-bottom: 32px;">The gap only grows</div>
+      <div style="position: relative; width: 640px; height: 340px;" class="fade-up fade-up-d1">
+        <svg viewBox="0 0 640 340" width="640" height="340" xmlns="http://www.w3.org/2000/svg">
+          <!-- Axes -->
+          <line x1="70" y1="280" x2="580" y2="280" stroke="#3a3632" stroke-width="1"/>
+          <line x1="70" y1="280" x2="70" y2="30" stroke="#3a3632" stroke-width="1"/>
+
+          <!-- Y label -->
+          <text x="22" y="155" fill="#6b6660" font-family="Outfit,sans-serif" font-size="12" font-weight="300" transform="rotate(-90 22 155)" text-anchor="middle">AI-Derived Value</text>
+
+          <!-- X labels -->
+          <text x="155" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 1</text>
+          <text x="275" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 2</text>
+          <text x="400" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 3</text>
+          <text x="520" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 4+</text>
+
+          <!-- Grid lines -->
+          <line x1="155" y1="280" x2="155" y2="35" stroke="#3a3632" stroke-width="0.5" stroke-dasharray="3 6"/>
+          <line x1="275" y1="280" x2="275" y2="35" stroke="#3a3632" stroke-width="0.5" stroke-dasharray="3 6"/>
+          <line x1="400" y1="280" x2="400" y2="35" stroke="#3a3632" stroke-width="0.5" stroke-dasharray="3 6"/>
+          <line x1="520" y1="280" x2="520" y2="35" stroke="#3a3632" stroke-width="0.5" stroke-dasharray="3 6"/>
+
+          <!-- Shaded area between curves -->
+          <path d="M 90 262 C 180 252 320 180 560 68 L 560 268 C 320 272 180 274 90 275 Z" fill="rgba(123,130,200,0.06)"/>
+
+          <!-- Documented line (rising) -->
+          <path d="M 90 262 C 160 255 260 215 340 170 C 420 130 490 95 560 68" fill="none" stroke="#7B82C8" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Didn't line (flat) -->
+          <path d="M 90 270 C 200 270 400 269 560 268" fill="none" stroke="#3a3632" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
+
+          <!-- Labels at line endpoints -->
+          <text x="555" y="58" fill="#7B82C8" font-family="Outfit,sans-serif" font-size="14" font-weight="500" text-anchor="end">Documented</text>
+          <text x="555" y="260" fill="#6b6660" font-family="Outfit,sans-serif" font-size="14" font-weight="300" text-anchor="end">Didn't</text>
+
+          <!-- Gap annotation -->
+          <line x1="440" y1="115" x2="440" y2="268" stroke="#7B82C8" stroke-width="1" stroke-dasharray="2 3" opacity="0.3"/>
+          <text x="448" y="196" fill="#7B82C8" font-family="JetBrains Mono,monospace" font-size="11" font-weight="300" opacity="0.55">← the gap</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ CH 7: RECAP (1 slide) ═══════ -->
+
+  <div class="slide" data-chapter="recap">
+    <div class="slide-inner">
+      <div class="section-label fade-up" style="color: var(--ch7);">Recap</div>
+      <div class="recap-grid fade-up fade-up-d1">
+        <div class="recap-item">
+          <div class="recap-num" style="color: var(--ch2);">01</div>
+          <div class="recap-text">Export from Google Takeout. Gmail → .mbox.</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num" style="color: var(--ch3);">02</div>
+          <div class="recap-text">MAP framework — Mission, Activity Log, Payoff — lets AI survive memory resets.</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num" style="color: var(--ch4);">03</div>
+          <div class="recap-text">Open Loops: un-chased opportunities and broken commitments hiding in your inbox.</div>
+        </div>
+        <div class="recap-item">
+          <div class="recap-num" style="color: var(--ch6);">04</div>
+          <div class="recap-text">Start documenting now. Every data point is fuel for future AI analysis.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const chapterItems = document.querySelectorAll('.chapter-item');
+  const counter = document.getElementById('slide-counter');
+  let current = 0;
+  const total = slides.length;
+
+  const chapters = [
+    { name: 'memory', start: 0 },
+    { name: 'export', start: 1 },
+    { name: 'map', start: 4 },
+    { name: 'openloops', start: 9 },
+    { name: 'documentation', start: 12 },
+    { name: 'recap', start: 15 }
+  ];
+
+  const chapterColors = {
+    memory: '#C9A96E', export: '#5BA4A4', map: '#D47B5E',
+    openloops: '#5B8DEF',
+    documentation: '#7B82C8', recap: '#9A9590'
+  };
+
+  function getChapterForSlide(idx) {
+    let ch = chapters[0].name;
+    for (const c of chapters) { if (idx >= c.start) ch = c.name; }
+    return ch;
+  }
+
+  const dynamicStyle = document.createElement('style');
+  document.head.appendChild(dynamicStyle);
+
+  function updateNav() {
+    const currentChapter = getChapterForSlide(current);
+    const currentChapterIdx = chapters.findIndex(c => c.name === currentChapter);
+    const color = chapterColors[currentChapter] || '#9A9590';
+    chapterItems.forEach((item, i) => {
+      item.classList.remove('active', 'visited');
+      if (item.dataset.chapter === currentChapter) item.classList.add('active');
+      else if (i < currentChapterIdx) item.classList.add('visited');
+    });
+    dynamicStyle.textContent = `.chapter-item.active::before { background: ${color}; }`;
+  }
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= total) return;
+    slides[current].classList.remove('active');
+    current = idx;
+    slides[current].classList.add('active');
+    counter.textContent = `${current + 1} / ${total}`;
+    updateNav();
+  }
+
+  function goToChapter(name) {
+    const ch = chapters.find(c => c.name === name);
+    if (ch) goTo(ch.start);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(total - 1); }
+  });
+
+  let touchStartX = 0;
+  document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+  document.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) { diff > 0 ? goTo(current + 1) : goTo(current - 1); }
+  });
+
+  updateNav();
+</script>
+</body>
+</html>
