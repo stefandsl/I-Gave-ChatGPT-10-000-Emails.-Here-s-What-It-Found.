@@ -129,13 +129,13 @@
 <div id="slide-counter">1 / 16</div>
 
 <nav id="chapter-nav">
-  <div class="chapter-item active" data-chapter="memory" onclick="goToChapter('memory')">The Memory Problem</div>
-  <div class="chapter-item" data-chapter="export" onclick="goToChapter('export')">Exporting Your Data</div>
-  <div class="chapter-item" data-chapter="map" onclick="goToChapter('map')">The MAP Framework</div>
-  <div class="chapter-item" data-chapter="openloops" onclick="goToChapter('openloops')">Open Loops</div>
+  <div class="chapter-item active" data-chapter="memory" onclick="goToChapter('memory')" data-i18n="text_001">The Memory Problem</div>
+  <div class="chapter-item" data-chapter="export" onclick="goToChapter('export')" data-i18n="text_002">Exporting Your Data</div>
+  <div class="chapter-item" data-chapter="map" onclick="goToChapter('map')" data-i18n="text_003">The MAP Framework</div>
+  <div class="chapter-item" data-chapter="openloops" onclick="goToChapter('openloops')" data-i18n="text_004">Open Loops</div>
 
-  <div class="chapter-item" data-chapter="documentation" onclick="goToChapter('documentation')">Documentation Matters</div>
-  <div class="chapter-item" data-chapter="recap" onclick="goToChapter('recap')">Recap</div>
+  <div class="chapter-item" data-chapter="documentation" onclick="goToChapter('documentation')" data-i18n="text_005">Documentation Matters</div>
+  <div class="chapter-item" data-chapter="recap" onclick="goToChapter('recap')" data-i18n="text_006">Recap</div>
 </nav>
 
 <div id="slides-wrapper">
@@ -144,19 +144,19 @@
 
   <div class="slide active" data-chapter="memory">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch1);">The Memory Problem</div>
+      <div class="section-label fade-up" style="color: var(--ch1);" data-i18n="text_007">The Memory Problem</div>
       <div class="vs-container fade-up fade-up-d1">
         <div class="vs-box" style="background: rgba(201,169,110,0.06); border: 1px solid rgba(201,169,110,0.12);">
-          <div class="vs-box-label" style="color: var(--fg-dim); margin-bottom: 12px;">Your planning is based on</div>
-          <div class="vs-box-number" style="color: var(--fg-dim); text-decoration: line-through; opacity: 0.5;">Vibes</div>
+          <div class="vs-box-label" style="color: var(--fg-dim); margin-bottom: 12px;" data-i18n="text_008">Your planning is based on</div>
+          <div class="vs-box-number" style="color: var(--fg-dim); text-decoration: line-through; opacity: 0.5;" data-i18n="text_009">Vibes</div>
         </div>
         <div class="vs-divider">→</div>
         <div class="vs-box" style="background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2);">
-          <div class="vs-box-label" style="color: var(--ch1); margin-bottom: 12px;">It should be based on</div>
-          <div class="vs-box-number" style="color: var(--ch1);">Data</div>
+          <div class="vs-box-label" style="color: var(--ch1); margin-bottom: 12px;" data-i18n="text_010">It should be based on</div>
+          <div class="vs-box-number" style="color: var(--ch1);" data-i18n="text_011">Data</div>
         </div>
       </div>
-      <div class="sub-text fade-up fade-up-d2" style="margin-top:36px;">The data already exists.<br>It's sitting in your inbox.</div>
+      <div class="sub-text fade-up fade-up-d2" style="margin-top:36px;" data-i18n-node-0="text_012" data-i18n-node-1="text_013">The data already exists.<br>It's sitting in your inbox.</div>
     </div>
   </div>
 
@@ -164,30 +164,30 @@
 
   <div class="slide" data-chapter="export">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch2);">Exporting Your Data</div>
+      <div class="section-label fade-up" style="color: var(--ch2);" data-i18n="text_014">Exporting Your Data</div>
       <div class="medium-heading fade-up fade-up-d1" style="margin-bottom: 40px;">
         <span style="color: var(--ch2); font-family: var(--mono); font-size: 1.8rem; font-weight: 300;">takeout.google.com</span>
       </div>
       <div style="display: flex; gap: 40px; margin-top: 12px; justify-content: center;" class="fade-up fade-up-d2">
         <div style="text-align: center; padding: 28px 36px; border-radius: 10px; background: rgba(91,164,164,0.08); border: 1px solid rgba(91,164,164,0.15);">
-          <div style="font-family: var(--mono); font-size: 1.6rem; margin-bottom: 8px; color: var(--ch2);">.mbox</div>
-          <div style="font-family: var(--sans); font-size: 0.95rem; color: var(--fg-dim); font-weight: 300;">Every email<br>Timestamps · Threads · Contacts</div>
+          <div style="font-family: var(--mono); font-size: 1.6rem; margin-bottom: 8px; color: var(--ch2);" data-i18n="text_015">.mbox</div>
+          <div style="font-family: var(--sans); font-size: 0.95rem; color: var(--fg-dim); font-weight: 300;" data-i18n-node-0="text_016" data-i18n-node-1="text_017">Every email<br>Timestamps · Threads · Contacts</div>
         </div>
       </div>
-      <div class="sub-text fade-up fade-up-d3">Free. Deselect everything except Gmail.</div>
+      <div class="sub-text fade-up fade-up-d3" data-i18n="text_018">Free. Deselect everything except Gmail.</div>
     </div>
   </div>
 
   <div class="slide" data-chapter="export">
     <div class="slide-inner">
-      <div class="small-heading fade-up">Not just Google.</div>
+      <div class="small-heading fade-up" data-i18n="text_019">Not just Google.</div>
       <div style="display: flex; gap: 20px; margin-top: 32px; flex-wrap: wrap; justify-content: center;" class="fade-up fade-up-d1">
-        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">LinkedIn DMs</div>
-        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">Slack Messages</div>
-        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">Facebook</div>
-        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);">Instagram</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);" data-i18n="text_020">LinkedIn DMs</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);" data-i18n="text_021">Slack Messages</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);" data-i18n="text_022">Facebook</div>
+        <div class="doc-item" style="border-color: rgba(91,164,164,0.2); color: var(--fg-dim);" data-i18n="text_023">Instagram</div>
       </div>
-      <div class="sub-text fade-up fade-up-d2"><span style="color: var(--ch2);">Same principle: export the raw data, point AI at it.</span></div>
+      <div class="sub-text fade-up fade-up-d2"><span style="color: var(--ch2);" data-i18n="text_024">Same principle: export the raw data, point AI at it.</span></div>
     </div>
   </div>
 
@@ -196,15 +196,15 @@
       <div class="vs-container fade-up">
         <div class="vs-box" style="background: rgba(91,164,164,0.04); border: 1px solid rgba(91,164,164,0.1);">
           <div class="vs-box-number" style="color: var(--ch2); font-size: 2.8rem;">~10,000</div>
-          <div class="vs-box-label" style="color: var(--fg-dim);">pages of your data</div>
+          <div class="vs-box-label" style="color: var(--fg-dim);" data-i18n="text_025">pages of your data</div>
         </div>
-        <div class="vs-divider" style="color: var(--ch2);">vs</div>
+        <div class="vs-divider" style="color: var(--ch2);" data-i18n="text_026">vs</div>
         <div class="vs-box" style="background: rgba(91,164,164,0.04); border: 1px solid rgba(91,164,164,0.1);">
           <div class="vs-box-number" style="color: var(--fg-dim); font-size: 2.8rem;">~200</div>
-          <div class="vs-box-label" style="color: var(--fg-dim);">pages AI can hold</div>
+          <div class="vs-box-label" style="color: var(--fg-dim);" data-i18n="text_027">pages AI can hold</div>
         </div>
       </div>
-      <div class="sub-text fade-up fade-up-d1" style="margin-top: 36px;">You need a system that lets AI <span style="color: var(--ch2);">survive memory resets.</span></div>
+      <div class="sub-text fade-up fade-up-d1" style="margin-top: 36px;" data-i18n-node-0="text_028">You need a system that lets AI <span style="color: var(--ch2);" data-i18n="text_029">survive memory resets.</span></div>
     </div>
   </div>
 
@@ -212,20 +212,20 @@
 
   <div class="slide" data-chapter="map">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch3);">The Solution</div>
+      <div class="section-label fade-up" style="color: var(--ch3);" data-i18n="text_030">The Solution</div>
       <div style="display: flex; align-items: baseline; gap: 6px; justify-content: center;" class="fade-up fade-up-d1">
-        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;">M</span>
+        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;" data-i18n="text_031">M</span>
         <span class="big-statement" style="color: var(--fg-dim); font-size: 3rem;">·</span>
-        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;">A</span>
+        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;" data-i18n="text_032">A</span>
         <span class="big-statement" style="color: var(--fg-dim); font-size: 3rem;">·</span>
-        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;">P</span>
+        <span class="big-statement" style="color: var(--ch3); font-size: 5.5rem; font-weight: 500;" data-i18n="text_033">P</span>
       </div>
       <div style="display: flex; gap: 36px; margin-top: 8px; justify-content: center;" class="fade-up fade-up-d2">
-        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);">Mission</span>
-        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);">Activity Log</span>
-        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);">Payoff</span>
+        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);" data-i18n="text_034">Mission</span>
+        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);" data-i18n="text_035">Activity Log</span>
+        <span style="font-family: var(--sans); font-size: 1.05rem; font-weight: 300; color: var(--fg-dim);" data-i18n="text_036">Payoff</span>
       </div>
-      <div class="sub-text fade-up fade-up-d3">Three files. AI's memory that survives the reset.</div>
+      <div class="sub-text fade-up fade-up-d3" data-i18n="text_037">Three files. AI's memory that survives the reset.</div>
     </div>
   </div>
 
@@ -234,21 +234,21 @@
     <div class="slide-inner">
       <div class="map-cards fade-up">
         <div class="map-card" style="background: rgba(212,123,94,0.08); border: 1px solid rgba(212,123,94,0.15);">
-          <div class="map-card-letter" style="color: var(--ch3);">M</div>
-          <div class="map-card-title" style="color: var(--ch3);">Mission</div>
-          <div class="map-card-desc">The constant across all resets.</div>
-          <div class="map-card-file" style="color: var(--ch3);">claude.md / agents.md</div>
+          <div class="map-card-letter" style="color: var(--ch3);" data-i18n="text_038">M</div>
+          <div class="map-card-title" style="color: var(--ch3);" data-i18n="text_039">Mission</div>
+          <div class="map-card-desc" data-i18n="text_040">The constant across all resets.</div>
+          <div class="map-card-file" style="color: var(--ch3);" data-i18n="text_041">claude.md / agents.md</div>
         </div>
         <div class="map-card" style="background: rgba(212,123,94,0.05); border: 1px solid rgba(212,123,94,0.1);">
-          <div class="map-card-letter" style="color: var(--ch3); opacity:0.7;">A</div>
-          <div class="map-card-title" style="color: var(--ch3); opacity:0.8;">Activity Log</div>
-          <div class="map-card-desc">Prevents duplicate work.</div>
+          <div class="map-card-letter" style="color: var(--ch3); opacity:0.7;" data-i18n="text_042">A</div>
+          <div class="map-card-title" style="color: var(--ch3); opacity:0.8;" data-i18n="text_043">Activity Log</div>
+          <div class="map-card-desc" data-i18n="text_044">Prevents duplicate work.</div>
           <div class="map-card-file" style="color: var(--ch3);">todos.md</div>
         </div>
         <div class="map-card" style="background: rgba(212,123,94,0.05); border: 1px solid rgba(212,123,94,0.1);">
-          <div class="map-card-letter" style="color: var(--ch3); opacity:0.7;">P</div>
-          <div class="map-card-title" style="color: var(--ch3); opacity:0.8;">Payoff</div>
-          <div class="map-card-desc">Where insight gathers.</div>
+          <div class="map-card-letter" style="color: var(--ch3); opacity:0.7;" data-i18n="text_045">P</div>
+          <div class="map-card-title" style="color: var(--ch3); opacity:0.8;" data-i18n="text_046">Payoff</div>
+          <div class="map-card-desc" data-i18n="text_047">Where insight gathers.</div>
           <div class="map-card-file" style="color: var(--ch3);">insights.md</div>
         </div>
       </div>
@@ -269,7 +269,7 @@
   -->
   <div class="slide" data-chapter="map">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch3);">The Cycle</div>
+      <div class="section-label fade-up" style="color: var(--ch3);" data-i18n="text_048">The Cycle</div>
       <div class="fade-up fade-up-d1" style="display:flex; justify-content:center;">
         <svg viewBox="0 0 640 350" width="640" height="350" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -285,41 +285,41 @@
           <rect x="60" y="20" width="140" height="50" rx="8"
                 fill="rgba(212,123,94,0.14)" stroke="rgba(212,123,94,0.3)" stroke-width="1"/>
           <text x="130" y="50" text-anchor="middle"
-                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Wake Up</text>
+                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="15" font-weight="400" data-i18n="text_049">Wake Up</text>
 
           <rect x="250" y="20" width="150" height="50" rx="8"
                 fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
           <text x="325" y="50" text-anchor="middle"
-                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Read Mission</text>
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400" data-i18n="text_050">Read Mission</text>
 
           <rect x="450" y="20" width="140" height="50" rx="8"
                 fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
           <text x="520" y="50" text-anchor="middle"
-                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Check Todos</text>
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400" data-i18n="text_051">Check Todos</text>
 
           <!-- ══ ROW 2: MIDDLE BOX ══ -->
           <rect x="450" y="145" width="140" height="50" rx="8"
                 fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
           <text x="520" y="175" text-anchor="middle"
-                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Process Batch</text>
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400" data-i18n="text_052">Process Batch</text>
 
           <!-- ══ ROW 3: BOTTOM BOXES ══ -->
           <rect x="450" y="270" width="140" height="50" rx="8"
                 fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
           <text x="520" y="300" text-anchor="middle"
-                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Write Insights</text>
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400" data-i18n="text_053">Write Insights</text>
 
           <rect x="250" y="270" width="150" height="50" rx="8"
                 fill="rgba(212,123,94,0.07)" stroke="rgba(212,123,94,0.14)" stroke-width="1"/>
           <text x="325" y="300" text-anchor="middle"
-                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400">Update Todos</text>
+                fill="#e8e4df" font-family="Outfit,sans-serif" font-size="15" font-weight="400" data-i18n="text_054">Update Todos</text>
 
           <rect x="60" y="270" width="140" height="50" rx="8"
                 fill="rgba(212,123,94,0.17)" stroke="rgba(212,123,94,0.35)" stroke-width="1"/>
           <text x="130" y="294" text-anchor="middle"
-                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Memory Full</text>
+                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="14" font-weight="400" data-i18n="text_055">Memory Full</text>
           <text x="130" y="312" text-anchor="middle"
-                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="13" font-weight="300">→ Reset</text>
+                fill="#D47B5E" font-family="Outfit,sans-serif" font-size="13" font-weight="300" data-i18n="text_056">→ Reset</text>
 
           <!-- ══ ARROWS ══ -->
           <!-- Top: Wake Up → Read Mission -->
@@ -356,10 +356,10 @@
           <text x="10" y="175" fill="#D47B5E"
                 font-family="JetBrains Mono,monospace" font-size="10" font-weight="400"
                 letter-spacing="0.12em" text-anchor="middle"
-                transform="rotate(-90 10 175)" opacity="0.65">REPEAT</text>
+                transform="rotate(-90 10 175)" opacity="0.65" data-i18n="text_057">REPEAT</text>
         </svg>
       </div>
-      <div class="sub-text fade-up fade-up-d2" style="margin-top: 12px;">The files are AI's memory that <em style="color: var(--ch3);">survives</em> the reset.</div>
+      <div class="sub-text fade-up fade-up-d2" style="margin-top: 12px;" data-i18n-node-0="text_058" data-i18n-node-1="text_060">The files are AI's memory that <em style="color: var(--ch3);" data-i18n="text_059">survives</em> the reset.</div>
     </div>
   </div>
 
@@ -367,10 +367,10 @@
   <div class="slide" data-chapter="map">
     <div class="slide-inner" style="justify-content: center;">
       <div style="text-align: center;" class="fade-up">
-        <div style="font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ch3); margin-bottom: 24px;">Live Walkthrough</div>
-        <div class="medium-heading" style="font-size: 2.2rem;">Setting up the MAP system</div>
-        <div class="sub-text" style="margin-top: 16px; color: var(--fg-dim);">Claude Cowork · Claude Code · OpenAI Codex</div>
-        <div class="demo-badge" style="background: rgba(212,123,94,0.1); border: 1px solid rgba(212,123,94,0.25); color: var(--ch3);">
+        <div style="font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ch3); margin-bottom: 24px;" data-i18n="text_061">Live Walkthrough</div>
+        <div class="medium-heading" style="font-size: 2.2rem;" data-i18n="text_062">Setting up the MAP system</div>
+        <div class="sub-text" style="margin-top: 16px; color: var(--fg-dim);" data-i18n="text_063">Claude Cowork · Claude Code · OpenAI Codex</div>
+        <div class="demo-badge" style="background: rgba(212,123,94,0.1); border: 1px solid rgba(212,123,94,0.25); color: var(--ch3);" data-i18n-node-0="text_064">
           <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ch3);"></span>
           We're doing it live
         </div>
@@ -381,7 +381,7 @@
   <!-- SETUP FLOW -->
   <div class="slide" data-chapter="map">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch3);">Getting Started</div>
+      <div class="section-label fade-up" style="color: var(--ch3);" data-i18n="text_065">Getting Started</div>
       <div style="margin-top: 8px;" class="fade-up fade-up-d1">
         <svg width="700" height="340" viewBox="0 0 700 340" fill="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -391,11 +391,11 @@
           <!-- Step 1: Folder -->
           <rect x="0" y="30" width="150" height="120" rx="12" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.2)" stroke-width="1"/>
           <text x="75" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">📁</text>
-          <text x="75" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Create a folder</text>
-          <text x="75" y="122" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300">Drop in your Takeout files</text>
+          <text x="75" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400" data-i18n="text_066">Create a folder</text>
+          <text x="75" y="122" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300" data-i18n="text_067">Drop in your Takeout files</text>
           <!-- File icons inside folder -->
           <rect x="24" y="132" width="46" height="14" rx="3" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.2)" stroke-width="0.5"/>
-          <text x="47" y="142" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="8">.mbox</text>
+          <text x="47" y="142" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="8" data-i18n="text_068">.mbox</text>
 
           <!-- Arrow 1→2 -->
           <line x1="158" y1="90" x2="178" y2="90" stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#setup-arrow)"/>
@@ -403,8 +403,8 @@
           <!-- Step 2: Open in tool -->
           <rect x="186" y="30" width="150" height="120" rx="12" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.2)" stroke-width="1"/>
           <text x="261" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">🖥</text>
-          <text x="261" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Open in AI tool</text>
-          <text x="261" y="120" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300">Codex · Claude Cowork</text>
+          <text x="261" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400" data-i18n="text_069">Open in AI tool</text>
+          <text x="261" y="120" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300" data-i18n="text_070">Codex · Claude Cowork</text>
 
           <!-- Arrow 2→3 -->
           <line x1="344" y1="90" x2="364" y2="90" stroke="rgba(212,123,94,0.4)" stroke-width="1.5" marker-end="url(#setup-arrow)"/>
@@ -412,7 +412,7 @@
           <!-- Step 3: Create file -->
           <rect x="372" y="30" width="150" height="120" rx="12" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.2)" stroke-width="1"/>
           <text x="447" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">📝</text>
-          <text x="447" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400">Create instructions</text>
+          <text x="447" y="100" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="14" font-weight="400" data-i18n="text_071">Create instructions</text>
           <rect x="394" y="110" width="46" height="14" rx="3" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.2)" stroke-width="0.5"/>
           <text x="417" y="120" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="7.5">agents.md</text>
           <rect x="448" y="110" width="50" height="14" rx="3" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.2)" stroke-width="0.5"/>
@@ -424,27 +424,27 @@
           <!-- Step 4: Get to work -->
           <rect x="558" y="30" width="140" height="120" rx="12" fill="rgba(212,123,94,0.14)" stroke="rgba(212,123,94,0.35)" stroke-width="1.5"/>
           <text x="628" y="68" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="28">🚀</text>
-          <text x="628" y="98" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="15" font-weight="500">"Get to work"</text>
-          <text x="628" y="120" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300">AI takes it from here</text>
+          <text x="628" y="98" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="15" font-weight="500" data-i18n="text_072">"Get to work"</text>
+          <text x="628" y="120" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" font-weight="300" data-i18n="text_073">AI takes it from here</text>
 
           <!-- Bottom: what's in the folder visual -->
-          <text x="0" y="210" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="10" font-weight="400" letter-spacing="0.1em">YOUR FOLDER</text>
+          <text x="0" y="210" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="10" font-weight="400" letter-spacing="0.1em" data-i18n="text_074">YOUR FOLDER</text>
           <rect x="0" y="222" width="700" height="108" rx="10" fill="rgba(212,123,94,0.04)" stroke="rgba(212,123,94,0.1)" stroke-width="1" stroke-dasharray="4 3"/>
 
           <rect x="60" y="242" width="120" height="68" rx="8" fill="rgba(212,123,94,0.08)" stroke="rgba(212,123,94,0.15)" stroke-width="1"/>
-          <text x="120" y="268" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11">Gmail export</text>
-          <text x="120" y="286" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="10">.mbox</text>
+          <text x="120" y="268" text-anchor="middle" fill="#6b6660" font-family="Outfit,sans-serif" font-size="11" data-i18n="text_075">Gmail export</text>
+          <text x="120" y="286" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="10" data-i18n="text_076">.mbox</text>
 
           <text x="215" y="276" fill="rgba(212,123,94,0.3)" font-family="Outfit,sans-serif" font-size="20">+</text>
 
           <rect x="255" y="242" width="160" height="68" rx="8" fill="rgba(212,123,94,0.12)" stroke="rgba(212,123,94,0.25)" stroke-width="1"/>
-          <text x="335" y="268" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="11" font-weight="400">Your instructions</text>
-          <text x="335" y="286" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="10">agents.md / CLAUDE.md</text>
+          <text x="335" y="268" text-anchor="middle" fill="#e8e4df" font-family="Outfit,sans-serif" font-size="11" font-weight="400" data-i18n="text_077">Your instructions</text>
+          <text x="335" y="286" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="10" data-i18n="text_078">agents.md / CLAUDE.md</text>
 
           <text x="450" y="276" fill="rgba(212,123,94,0.3)" font-family="Outfit,sans-serif" font-size="20">=</text>
 
           <rect x="490" y="248" width="96" height="56" rx="8" fill="rgba(212,123,94,0.18)" stroke="rgba(212,123,94,0.4)" stroke-width="1.5"/>
-          <text x="538" y="272" text-anchor="middle" fill="#D47B5E" font-family="Outfit,sans-serif" font-size="12" font-weight="500">Ready to go</text>
+          <text x="538" y="272" text-anchor="middle" fill="#D47B5E" font-family="Outfit,sans-serif" font-size="12" font-weight="500" data-i18n="text_079">Ready to go</text>
           <text x="538" y="290" text-anchor="middle" fill="#D47B5E" font-family="JetBrains Mono,monospace" font-size="18">✓</text>
         </svg>
       </div>
@@ -455,17 +455,17 @@
 
   <div class="slide" data-chapter="openloops">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch4);">Email Mining</div>
-      <div class="big-statement fade-up fade-up-d1"><em style="color: var(--ch4);">Open Loops</em></div>
-      <div class="sub-text fade-up fade-up-d2">Commitments made. Never followed through.<br>In both directions.</div>
+      <div class="section-label fade-up" style="color: var(--ch4);" data-i18n="text_080">Email Mining</div>
+      <div class="big-statement fade-up fade-up-d1"><em style="color: var(--ch4);" data-i18n="text_081">Open Loops</em></div>
+      <div class="sub-text fade-up fade-up-d2" data-i18n-node-0="text_082" data-i18n-node-1="text_083">Commitments made. Never followed through.<br>In both directions.</div>
     </div>
   </div>
 
   <div class="slide" data-chapter="openloops">
     <div class="slide-inner">
-      <div class="big-statement fade-up" style="font-size: 3.6rem;">That's an <em style="color: var(--ch4);">un-chased</em> opportunity.</div>
-      <div class="sub-text fade-up fade-up-d1">People who expressed genuine interest.<br>And you never circled back.</div>
-      <div style="margin-top: 36px; font-family: var(--mono); font-size: 0.88rem; color: var(--ch4); letter-spacing: 0.08em;" class="fade-up fade-up-d2">Could be 10, 20, 50 of those in your email right now</div>
+      <div class="big-statement fade-up" style="font-size: 3.6rem;" data-i18n-node-0="text_084" data-i18n-node-1="text_086">That's an <em style="color: var(--ch4);" data-i18n="text_085">un-chased</em> opportunity.</div>
+      <div class="sub-text fade-up fade-up-d1" data-i18n-node-0="text_087" data-i18n-node-1="text_088">People who expressed genuine interest.<br>And you never circled back.</div>
+      <div style="margin-top: 36px; font-family: var(--mono); font-size: 0.88rem; color: var(--ch4); letter-spacing: 0.08em;" class="fade-up fade-up-d2" data-i18n="text_089">Could be 10, 20, 50 of those in your email right now</div>
     </div>
   </div>
 
@@ -526,23 +526,23 @@
 
   <div class="slide" data-chapter="documentation">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch6);">The Bigger Point</div>
-      <div class="big-statement fade-up fade-up-d1" style="font-size: 3.2rem;">Documentation is<br><em style="color: var(--ch6);">fuel for future AI.</em></div>
+      <div class="section-label fade-up" style="color: var(--ch6);" data-i18n="text_090">The Bigger Point</div>
+      <div class="big-statement fade-up fade-up-d1" style="font-size: 3.2rem;" data-i18n-node-0="text_091">Documentation is<br><em style="color: var(--ch6);" data-i18n="text_092">fuel for future AI.</em></div>
     </div>
   </div>
 
   <div class="slide" data-chapter="documentation">
     <div class="slide-inner">
-      <div class="small-heading fade-up" style="margin-bottom: 32px;">Every data point is an investment</div>
+      <div class="small-heading fade-up" style="margin-bottom: 32px;" data-i18n="text_093">Every data point is an investment</div>
       <div style="display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 520px;" class="fade-up fade-up-d1">
         <div style="display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-radius: 8px; background: rgba(123,130,200,0.06); border: 1px solid rgba(123,130,200,0.1);">
           <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(123,130,200,0.12); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;">🎙</div>
-          <div style="font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg);">Record your meetings.</div>
+          <div style="font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg);" data-i18n="text_094">Record your meetings.</div>
         </div>
 
         <div style="display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-radius: 8px; background: rgba(123,130,200,0.04); border: 1px solid rgba(123,130,200,0.08);">
           <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(123,130,200,0.08); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0;">✍️</div>
-          <div style="font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg);">Keep communication in writing.</div>
+          <div style="font-family: var(--sans); font-size: 1rem; font-weight: 300; color: var(--fg);" data-i18n="text_095">Keep communication in writing.</div>
         </div>
       </div>
     </div>
@@ -551,7 +551,7 @@
   <!-- GAP CHART — labels INSIDE, not at right edge -->
   <div class="slide" data-chapter="documentation">
     <div class="slide-inner">
-      <div class="small-heading fade-up" style="margin-bottom: 32px;">The gap only grows</div>
+      <div class="small-heading fade-up" style="margin-bottom: 32px;" data-i18n="text_096">The gap only grows</div>
       <div style="position: relative; width: 640px; height: 340px;" class="fade-up fade-up-d1">
         <svg viewBox="0 0 640 340" width="640" height="340" xmlns="http://www.w3.org/2000/svg">
           <!-- Axes -->
@@ -559,13 +559,13 @@
           <line x1="70" y1="280" x2="70" y2="30" stroke="#3a3632" stroke-width="1"/>
 
           <!-- Y label -->
-          <text x="22" y="155" fill="#6b6660" font-family="Outfit,sans-serif" font-size="12" font-weight="300" transform="rotate(-90 22 155)" text-anchor="middle">AI-Derived Value</text>
+          <text x="22" y="155" fill="#6b6660" font-family="Outfit,sans-serif" font-size="12" font-weight="300" transform="rotate(-90 22 155)" text-anchor="middle" data-i18n="text_097">AI-Derived Value</text>
 
           <!-- X labels -->
-          <text x="155" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 1</text>
-          <text x="275" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 2</text>
-          <text x="400" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 3</text>
-          <text x="520" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle">Year 4+</text>
+          <text x="155" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle" data-i18n="text_098">Year 1</text>
+          <text x="275" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle" data-i18n="text_099">Year 2</text>
+          <text x="400" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle" data-i18n="text_100">Year 3</text>
+          <text x="520" y="305" fill="#6b6660" font-family="JetBrains Mono,monospace" font-size="12" text-anchor="middle" data-i18n="text_101">Year 4+</text>
 
           <!-- Grid lines -->
           <line x1="155" y1="280" x2="155" y2="35" stroke="#3a3632" stroke-width="0.5" stroke-dasharray="3 6"/>
@@ -583,12 +583,12 @@
           <path d="M 90 270 C 200 270 400 269 560 268" fill="none" stroke="#3a3632" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 4"/>
 
           <!-- Labels at line endpoints -->
-          <text x="555" y="58" fill="#7B82C8" font-family="Outfit,sans-serif" font-size="14" font-weight="500" text-anchor="end">Documented</text>
-          <text x="555" y="260" fill="#6b6660" font-family="Outfit,sans-serif" font-size="14" font-weight="300" text-anchor="end">Didn't</text>
+          <text x="555" y="58" fill="#7B82C8" font-family="Outfit,sans-serif" font-size="14" font-weight="500" text-anchor="end" data-i18n="text_102">Documented</text>
+          <text x="555" y="260" fill="#6b6660" font-family="Outfit,sans-serif" font-size="14" font-weight="300" text-anchor="end" data-i18n="text_103">Didn't</text>
 
           <!-- Gap annotation -->
           <line x1="440" y1="115" x2="440" y2="268" stroke="#7B82C8" stroke-width="1" stroke-dasharray="2 3" opacity="0.3"/>
-          <text x="448" y="196" fill="#7B82C8" font-family="JetBrains Mono,monospace" font-size="11" font-weight="300" opacity="0.55">← the gap</text>
+          <text x="448" y="196" fill="#7B82C8" font-family="JetBrains Mono,monospace" font-size="11" font-weight="300" opacity="0.55" data-i18n="text_104">← the gap</text>
         </svg>
       </div>
     </div>
@@ -598,23 +598,23 @@
 
   <div class="slide" data-chapter="recap">
     <div class="slide-inner">
-      <div class="section-label fade-up" style="color: var(--ch7);">Recap</div>
+      <div class="section-label fade-up" style="color: var(--ch7);" data-i18n="text_105">Recap</div>
       <div class="recap-grid fade-up fade-up-d1">
         <div class="recap-item">
           <div class="recap-num" style="color: var(--ch2);">01</div>
-          <div class="recap-text">Export from Google Takeout. Gmail → .mbox.</div>
+          <div class="recap-text" data-i18n="text_106">Export from Google Takeout. Gmail → .mbox.</div>
         </div>
         <div class="recap-item">
           <div class="recap-num" style="color: var(--ch3);">02</div>
-          <div class="recap-text">MAP framework — Mission, Activity Log, Payoff — lets AI survive memory resets.</div>
+          <div class="recap-text" data-i18n="text_107">MAP framework — Mission, Activity Log, Payoff — lets AI survive memory resets.</div>
         </div>
         <div class="recap-item">
           <div class="recap-num" style="color: var(--ch4);">03</div>
-          <div class="recap-text">Open Loops: un-chased opportunities and broken commitments hiding in your inbox.</div>
+          <div class="recap-text" data-i18n="text_108">Open Loops: un-chased opportunities and broken commitments hiding in your inbox.</div>
         </div>
         <div class="recap-item">
           <div class="recap-num" style="color: var(--ch6);">04</div>
-          <div class="recap-text">Start documenting now. Every data point is fuel for future AI analysis.</div>
+          <div class="recap-text" data-i18n="text_109">Start documenting now. Every data point is fuel for future AI analysis.</div>
         </div>
       </div>
     </div>
@@ -695,5 +695,62 @@
 
   updateNav();
 </script>
+
+<!-- ds70-i18n-automation:v1 -->
+<style id="ds70-i18n-style">
+  #ds70-i18n-control { position: fixed; top: 12px; right: 12px; z-index: 2147483647; font: 14px/1.3 system-ui, sans-serif; }
+  #ds70-i18n-select { min-width: 118px; padding: 6px 28px 6px 9px; border: 1px solid currentColor; border-radius: 4px; background: Canvas; color: CanvasText; }
+  @media (max-width: 600px) { #ds70-i18n-control { top: auto; bottom: 12px; } }
+</style>
+<div id="ds70-i18n-control">
+  <label for="ds70-i18n-select" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Language</label>
+  <select id="ds70-i18n-select" aria-label="Language">
+    <option value="en">English</option><option value="it">Italiano</option><option value="ro">Română</option><option value="ru">Русский</option>
+  </select>
+</div>
+<script id="ds70-i18n-translations" type="application/json">{"en": {"text_001": "The Memory Problem", "text_002": "Exporting Your Data", "text_003": "The MAP Framework", "text_004": "Open Loops", "text_005": "Documentation Matters", "text_006": "Recap", "text_007": "The Memory Problem", "text_008": "Your planning is based on", "text_009": "Vibes", "text_010": "It should be based on", "text_011": "Data", "text_012": "The data already exists.", "text_013": "It's sitting in your inbox.", "text_014": "Exporting Your Data", "text_015": ".mbox", "text_016": "Every email", "text_017": "Timestamps · Threads · Contacts", "text_018": "Free. Deselect everything except Gmail.", "text_019": "Not just Google.", "text_020": "LinkedIn DMs", "text_021": "Slack Messages", "text_022": "Facebook", "text_023": "Instagram", "text_024": "Same principle: export the raw data, point AI at it.", "text_025": "pages of your data", "text_026": "vs", "text_027": "pages AI can hold", "text_028": "You need a system that lets AI", "text_029": "survive memory resets.", "text_030": "The Solution", "text_031": "M", "text_032": "A", "text_033": "P", "text_034": "Mission", "text_035": "Activity Log", "text_036": "Payoff", "text_037": "Three files. AI's memory that survives the reset.", "text_038": "M", "text_039": "Mission", "text_040": "The constant across all resets.", "text_041": "claude.md / agents.md", "text_042": "A", "text_043": "Activity Log", "text_044": "Prevents duplicate work.", "text_045": "P", "text_046": "Payoff", "text_047": "Where insight gathers.", "text_048": "The Cycle", "text_049": "Wake Up", "text_050": "Read Mission", "text_051": "Check Todos", "text_052": "Process Batch", "text_053": "Write Insights", "text_054": "Update Todos", "text_055": "Memory Full", "text_056": "→ Reset", "text_057": "REPEAT", "text_058": "The files are AI's memory that", "text_059": "survives", "text_060": "the reset.", "text_061": "Live Walkthrough", "text_062": "Setting up the MAP system", "text_063": "Claude Cowork · Claude Code · OpenAI Codex", "text_064": "We're doing it live", "text_065": "Getting Started", "text_066": "Create a folder", "text_067": "Drop in your Takeout files", "text_068": ".mbox", "text_069": "Open in AI tool", "text_070": "Codex · Claude Cowork", "text_071": "Create instructions", "text_072": "\"Get to work\"", "text_073": "AI takes it from here", "text_074": "YOUR FOLDER", "text_075": "Gmail export", "text_076": ".mbox", "text_077": "Your instructions", "text_078": "agents.md / CLAUDE.md", "text_079": "Ready to go", "text_080": "Email Mining", "text_081": "Open Loops", "text_082": "Commitments made. Never followed through.", "text_083": "In both directions.", "text_084": "That's an", "text_085": "un-chased", "text_086": "opportunity.", "text_087": "People who expressed genuine interest.", "text_088": "And you never circled back.", "text_089": "Could be 10, 20, 50 of those in your email right now", "text_090": "The Bigger Point", "text_091": "Documentation is", "text_092": "fuel for future AI.", "text_093": "Every data point is an investment", "text_094": "Record your meetings.", "text_095": "Keep communication in writing.", "text_096": "The gap only grows", "text_097": "AI-Derived Value", "text_098": "Year 1", "text_099": "Year 2", "text_100": "Year 3", "text_101": "Year 4+", "text_102": "Documented", "text_103": "Didn't", "text_104": "← the gap", "text_105": "Recap", "text_106": "Export from Google Takeout. Gmail → .mbox.", "text_107": "MAP framework — Mission, Activity Log, Payoff — lets AI survive memory resets.", "text_108": "Open Loops: un-chased opportunities and broken commitments hiding in your inbox.", "text_109": "Start documenting now. Every data point is fuel for future AI analysis."}, "it": {"text_001": "Il problema della memoria", "text_002": "Esportare i tuoi dati", "text_003": "Il framework MAP", "text_004": "Open loop", "text_005": "La documentazione conta", "text_006": "Riepilogo", "text_007": "Il problema della memoria", "text_008": "La tua pianificazione si basa su", "text_009": "sensazioni", "text_010": "Dovrebbe basarsi sui", "text_011": "dati", "text_012": "I dati esistono già.", "text_013": "Sono nella tua inbox.", "text_014": "Esportare i tuoi dati", "text_015": ".mbox", "text_016": "Ogni email", "text_017": "Timestamp · Thread · Contatti", "text_018": "Gratis. Deseleziona tutto tranne Gmail.", "text_019": "Non solo Google.", "text_020": "DM LinkedIn", "text_021": "Messaggi Slack", "text_022": "Facebook", "text_023": "Instagram", "text_024": "Stesso principio: esporta i dati grezzi e puntaci l'AI.", "text_025": "pagine dei tuoi dati", "text_026": "vs", "text_027": "pagine che l'AI può tenere", "text_028": "Ti serve un sistema che faccia", "text_029": "sopravvivere l'AI ai reset di memoria.", "text_030": "La soluzione", "text_031": "M", "text_032": "A", "text_033": "P", "text_034": "Missione", "text_035": "Activity Log", "text_036": "Payoff", "text_037": "Tre file. La memoria dell'AI che sopravvive al reset.", "text_038": "M", "text_039": "Missione", "text_040": "La costante attraverso tutti i reset.", "text_041": "claude.md / agents.md", "text_042": "A", "text_043": "Activity Log", "text_044": "Evita lavoro duplicato.", "text_045": "P", "text_046": "Payoff", "text_047": "Dove si raccolgono gli insight.", "text_048": "Il ciclo", "text_049": "Risveglio", "text_050": "Leggi missione", "text_051": "Controlla todos", "text_052": "Elabora batch", "text_053": "Scrivi insight", "text_054": "Aggiorna todos", "text_055": "Memoria piena", "text_056": "→ Reset", "text_057": "RIPETI", "text_058": "I file sono la memoria dell'AI che", "text_059": "sopravvive", "text_060": "al reset.", "text_061": "Walkthrough live", "text_062": "Configurare il sistema MAP", "text_063": "Claude Cowork · Claude Code · OpenAI Codex", "text_064": "Lo facciamo live", "text_065": "Per iniziare", "text_066": "Crea una cartella", "text_067": "Inserisci i file Takeout", "text_068": ".mbox", "text_069": "Apri in uno strumento AI", "text_070": "Codex · Claude Cowork", "text_071": "Crea istruzioni", "text_072": "\"Mettiti al lavoro\"", "text_073": "Da qui ci pensa l'AI", "text_074": "LA TUA CARTELLA", "text_075": "Export Gmail", "text_076": ".mbox", "text_077": "Le tue istruzioni", "text_078": "agents.md / CLAUDE.md", "text_079": "Pronto", "text_080": "Mining delle email", "text_081": "Open loop", "text_082": "Impegni presi. Mai portati avanti.", "text_083": "In entrambe le direzioni.", "text_084": "È una", "text_085": "opportunità", "text_086": "non inseguita.", "text_087": "Persone che hanno espresso interesse reale.", "text_088": "E non le hai mai ricontattate.", "text_089": "Potrebbero essercene 10, 20, 50 nella tua email adesso", "text_090": "Il punto più grande", "text_091": "La documentazione è", "text_092": "carburante per l'AI futura.", "text_093": "Ogni dato è un investimento", "text_094": "Registra le riunioni.", "text_095": "Mantieni la comunicazione scritta.", "text_096": "Il divario cresce soltanto", "text_097": "Valore derivato dall'AI", "text_098": "Anno 1", "text_099": "Anno 2", "text_100": "Anno 3", "text_101": "Anno 4+", "text_102": "Documentato", "text_103": "Non documentato", "text_104": "← il divario", "text_105": "Riepilogo", "text_106": "Esporta da Google Takeout. Gmail → .mbox.", "text_107": "Il framework MAP — Missione, Activity Log, Payoff — aiuta l'AI a sopravvivere ai reset di memoria.", "text_108": "Open loop: opportunità non inseguite e impegni rotti nascosti nella inbox.", "text_109": "Inizia a documentare ora. Ogni dato è carburante per le analisi AI future."}, "ro": {"text_001": "Problema memoriei", "text_002": "Exportul datelor tale", "text_003": "Frameworkul MAP", "text_004": "Open loops", "text_005": "Documentarea contează", "text_006": "Recapitulare", "text_007": "Problema memoriei", "text_008": "Planificarea ta se bazează pe", "text_009": "impresii", "text_010": "Ar trebui să se bazeze pe", "text_011": "date", "text_012": "Datele există deja.", "text_013": "Stau în inboxul tău.", "text_014": "Exportul datelor tale", "text_015": ".mbox", "text_016": "Fiecare email", "text_017": "Timestampuri · Threaduri · Contacte", "text_018": "Gratis. Deselectează tot în afară de Gmail.", "text_019": "Nu doar Google.", "text_020": "DM-uri LinkedIn", "text_021": "Mesaje Slack", "text_022": "Facebook", "text_023": "Instagram", "text_024": "Același principiu: exportă datele brute și indică-le AI.", "text_025": "pagini din datele tale", "text_026": "vs", "text_027": "pagini pe care AI le poate ține", "text_028": "Ai nevoie de un sistem care lasă AI", "text_029": "să supraviețuiască resetărilor de memorie.", "text_030": "Soluția", "text_031": "M", "text_032": "A", "text_033": "P", "text_034": "Misiune", "text_035": "Activity Log", "text_036": "Payoff", "text_037": "Trei fișiere. Memoria AI care supraviețuiește resetării.", "text_038": "M", "text_039": "Misiune", "text_040": "Constanta prin toate resetările.", "text_041": "claude.md / agents.md", "text_042": "A", "text_043": "Activity Log", "text_044": "Previne munca duplicată.", "text_045": "P", "text_046": "Payoff", "text_047": "Unde se adună insighturile.", "text_048": "Ciclul", "text_049": "Trezire", "text_050": "Citește misiunea", "text_051": "Verifică todos", "text_052": "Procesează batchul", "text_053": "Scrie insighturi", "text_054": "Actualizează todos", "text_055": "Memorie plină", "text_056": "→ Reset", "text_057": "REPETĂ", "text_058": "Fișierele sunt memoria AI care", "text_059": "supraviețuiește", "text_060": "resetării.", "text_061": "Walkthrough live", "text_062": "Configurarea sistemului MAP", "text_063": "Claude Cowork · Claude Code · OpenAI Codex", "text_064": "Facem asta live", "text_065": "Primii pași", "text_066": "Creează un folder", "text_067": "Pune fișierele Takeout", "text_068": ".mbox", "text_069": "Deschide într-un tool AI", "text_070": "Codex · Claude Cowork", "text_071": "Creează instrucțiuni", "text_072": "\"Treci la treabă\"", "text_073": "AI preia de aici", "text_074": "FOLDERUL TĂU", "text_075": "Export Gmail", "text_076": ".mbox", "text_077": "Instrucțiunile tale", "text_078": "agents.md / CLAUDE.md", "text_079": "Gata de lucru", "text_080": "Email mining", "text_081": "Open loops", "text_082": "Angajamente făcute. Niciodată urmărite.", "text_083": "În ambele direcții.", "text_084": "Aceasta este o", "text_085": "oportunitate", "text_086": "neurmărită.", "text_087": "Oameni care au arătat interes real.", "text_088": "Și nu ai revenit niciodată.", "text_089": "Pot fi 10, 20, 50 chiar acum în emailul tău", "text_090": "Ideea mai mare", "text_091": "Documentarea este", "text_092": "combustibil pentru AI viitoare.", "text_093": "Fiecare punct de date este o investiție", "text_094": "Înregistrează-ți ședințele.", "text_095": "Păstrează comunicarea în scris.", "text_096": "Diferența doar crește", "text_097": "Valoare derivată din AI", "text_098": "Anul 1", "text_099": "Anul 2", "text_100": "Anul 3", "text_101": "Anul 4+", "text_102": "Documentat", "text_103": "Nedocumentat", "text_104": "← diferența", "text_105": "Recapitulare", "text_106": "Exportă din Google Takeout. Gmail → .mbox.", "text_107": "Frameworkul MAP — Misiune, Activity Log, Payoff — ajută AI să supraviețuiască resetărilor de memorie.", "text_108": "Open loops: oportunități neurmărite și angajamente încălcate ascunse în inbox.", "text_109": "Începe să documentezi acum. Fiecare punct de date este combustibil pentru analiza AI viitoare."}, "ru": {"text_001": "Проблема памяти", "text_002": "Экспорт ваших данных", "text_003": "Фреймворк MAP", "text_004": "Open loops", "text_005": "Документация важна", "text_006": "Итоги", "text_007": "Проблема памяти", "text_008": "Ваше планирование основано на", "text_009": "ощущениях", "text_010": "Оно должно быть основано на", "text_011": "данных", "text_012": "Данные уже существуют.", "text_013": "Они лежат в вашем inbox.", "text_014": "Экспорт ваших данных", "text_015": ".mbox", "text_016": "Каждый email", "text_017": "Timestamp · Threads · Contacts", "text_018": "Бесплатно. Снимите все, кроме Gmail.", "text_019": "Не только Google.", "text_020": "LinkedIn DMs", "text_021": "Slack Messages", "text_022": "Facebook", "text_023": "Instagram", "text_024": "Тот же принцип: экспортируйте raw data и укажите AI на них.", "text_025": "страниц ваших данных", "text_026": "vs", "text_027": "страниц, которые держит AI", "text_028": "Нужна система, которая позволит AI", "text_029": "переживать сбросы памяти.", "text_030": "Решение", "text_031": "M", "text_032": "A", "text_033": "P", "text_034": "Mission", "text_035": "Activity Log", "text_036": "Payoff", "text_037": "Три файла. Память AI, которая переживает reset.", "text_038": "M", "text_039": "Mission", "text_040": "Константа через все resets.", "text_041": "claude.md / agents.md", "text_042": "A", "text_043": "Activity Log", "text_044": "Не дает делать работу дважды.", "text_045": "P", "text_046": "Payoff", "text_047": "Где накапливаются insights.", "text_048": "Цикл", "text_049": "Проснуться", "text_050": "Читать Mission", "text_051": "Проверить todos", "text_052": "Обработать batch", "text_053": "Записать insights", "text_054": "Обновить todos", "text_055": "Память полна", "text_056": "→ Reset", "text_057": "ПОВТОР", "text_058": "Файлы — это память AI, которая", "text_059": "переживает", "text_060": "reset.", "text_061": "Live walkthrough", "text_062": "Настройка системы MAP", "text_063": "Claude Cowork · Claude Code · OpenAI Codex", "text_064": "Делаем это live", "text_065": "Начало работы", "text_066": "Создайте folder", "text_067": "Добавьте файлы Takeout", "text_068": ".mbox", "text_069": "Откройте в AI tool", "text_070": "Codex · Claude Cowork", "text_071": "Создайте инструкции", "text_072": "\"Get to work\"", "text_073": "Дальше работает AI", "text_074": "ВАША ПАПКА", "text_075": "Gmail export", "text_076": ".mbox", "text_077": "Ваши инструкции", "text_078": "agents.md / CLAUDE.md", "text_079": "Готово", "text_080": "Email mining", "text_081": "Open loops", "text_082": "Обещания даны. Никогда не выполнены.", "text_083": "В обе стороны.", "text_084": "Это", "text_085": "неотработанная", "text_086": "возможность.", "text_087": "Люди проявили реальный интерес.", "text_088": "А вы так и не вернулись к ним.", "text_089": "Таких может быть 10, 20, 50 прямо сейчас в вашей почте", "text_090": "Главная мысль", "text_091": "Документация — это", "text_092": "топливо для будущего AI.", "text_093": "Каждая точка данных — инвестиция", "text_094": "Записывайте встречи.", "text_095": "Держите коммуникацию письменно.", "text_096": "Разрыв только растет", "text_097": "Ценность, полученная от AI", "text_098": "Год 1", "text_099": "Год 2", "text_100": "Год 3", "text_101": "Год 4+", "text_102": "Документировано", "text_103": "Нет", "text_104": "← разрыв", "text_105": "Итоги", "text_106": "Экспорт из Google Takeout. Gmail → .mbox.", "text_107": "Фреймворк MAP — Mission, Activity Log, Payoff — помогает AI переживать сбросы памяти.", "text_108": "Open loops: неотработанные возможности и нарушенные обещания, спрятанные в inbox.", "text_109": "Начните документировать сейчас. Каждая точка данных — топливо для будущего AI-анализа."}}</script>
+<script id="ds70-i18n-runtime">
+(() => {
+  'use strict';
+  const supported = ['en', 'it', 'ro', 'ru'];
+  const storageKey = 'ds70.i18n.language';
+  const dictionaries = JSON.parse(document.getElementById('ds70-i18n-translations').textContent);
+  const select = document.getElementById('ds70-i18n-select');
+  const apply = (language) => {
+    const lang = supported.includes(language) ? language : 'en';
+    const dictionary = dictionaries[lang] || dictionaries.en;
+    document.querySelectorAll('[data-i18n]').forEach((node) => {
+      const value = dictionary[node.dataset.i18n];
+      if (typeof value === 'string') node.textContent = value;
+    });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach((node) => {
+      const value = dictionary[node.dataset.i18nPlaceholder];
+      if (typeof value === 'string') node.setAttribute('placeholder', value);
+    });
+    document.querySelectorAll('[data-i18n-value]').forEach((node) => {
+      const value = dictionary[node.dataset.i18nValue];
+      if (typeof value === 'string') node.value = value;
+    });
+    document.querySelectorAll('*').forEach((node) => {
+      for (const attr of Array.from(node.attributes)) {
+        const match = attr.name.match(/^data-i18n-node-(\d+)$/);
+        if (!match) continue;
+        const textNodes = Array.from(node.childNodes).filter((child) => child.nodeType === Node.TEXT_NODE && child.textContent.trim());
+        const target = textNodes[Number(match[1])];
+        const value = dictionary[attr.value];
+        if (target && typeof value === 'string') target.textContent = target.textContent.replace(target.textContent.trim(), value);
+      }
+    });
+    document.documentElement.lang = lang;
+    select.value = lang;
+    try { localStorage.setItem(storageKey, lang); } catch (_) {}
+  };
+  select.addEventListener('change', () => apply(select.value));
+  let initial = 'en';
+  try { initial = localStorage.getItem(storageKey) || 'en'; } catch (_) {}
+  apply(initial);
+})();
+</script>
+<!-- /ds70-i18n-automation -->
 </body>
 </html>
